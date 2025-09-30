@@ -101,7 +101,9 @@ class YFinanceLoader(DataLoader):
         if isinstance(df.columns, pd.MultiIndex):
             # Flatten common yfinance MultiIndex: (Ticker, Field)
             try:
-                df.columns = [c[1] if isinstance(c, tuple) and len(c) > 1 else c for c in df.columns]
+                df.columns = [
+                    c[1] if isinstance(c, tuple) and len(c) > 1 else c for c in df.columns
+                ]
             except Exception:
                 df = df.droplevel(0, axis=1)
         df = df.rename(

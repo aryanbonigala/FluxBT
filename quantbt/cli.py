@@ -101,7 +101,9 @@ def run(
             from .reports.report import generate_html_report
 
             params: dict[str, object] = {"strategy": strategy, **strat.params}
-            report_path = generate_html_report(params=params, metrics=metrics, equity=equity, out_dir=ts_dir)
+            report_path = generate_html_report(
+                params=params, metrics=metrics, equity=equity, out_dir=ts_dir
+            )
             if report_path:
                 typer.echo(f"HTML report saved to: {report_path}")
         except Exception:
