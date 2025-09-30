@@ -1,6 +1,6 @@
-# quantbt Usage Guide
+# fluxbt Usage Guide
 
-This guide explains how to install, run, and get the most out of quantbt, including limitations to keep in mind.
+This guide explains how to install, run, and get the most out of fluxbt, including limitations to keep in mind.
 
 ## Installation
 
@@ -21,7 +21,7 @@ pip install jinja2
 Run a backtest from yfinance data:
 
 ```bash
-python -m quantbt.cli \
+python -m fluxbt.cli \
   --source yfinance --ticker SPY --interval 1d --start 2015-01-01 \
   --strategy sma --fast 20 --slow 50 \
   --cash 100000 --slippage-bps 1 --commission-bps 2 \
@@ -31,7 +31,7 @@ python -m quantbt.cli \
 Run a backtest from CSV data:
 
 ```bash
-python -m quantbt.cli \
+python -m fluxbt.cli \
   --source csv --csv-path path/to/ohlcv.csv \
   --strategy meanrev --window 20 --entry 2.0 --exit 0.5 \
   --cash 100000 --slippage-bps 1 --commission-bps 2 \
@@ -54,12 +54,12 @@ Outputs are saved to `--out` or `./runs/<timestamp>/` and include:
 ## Quickstart (API)
 
 ```python
-from quantbt.data.loader import YFinanceLoader
-from quantbt.data.feed import DataFeed
-from quantbt.core.broker import Broker
-from quantbt.core.engine import BacktestEngine
-from quantbt.core.metrics import compute_metrics
-from quantbt.strategies.sma_crossover import SMACrossover
+from fluxbt.data.loader import YFinanceLoader
+from fluxbt.data.feed import DataFeed
+from fluxbt.core.broker import Broker
+from fluxbt.core.engine import BacktestEngine
+from fluxbt.core.metrics import compute_metrics
+from fluxbt.strategies.sma_crossover import SMACrossover
 
 # Load data
 df = YFinanceLoader(ticker="SPY", interval="1d", start="2015-01-01").load()
@@ -71,7 +71,7 @@ hist = engine.run()
 metrics = compute_metrics(hist["equity"], freq="D")
 ```
 
-## Getting the most out of quantbt
+## Getting the most out of fluxbt
 
 - Keep it simple: start with clean daily data and basic params; iterate once the pipeline runs end-to-end.
 - Validate data: ensure monotonic `DatetimeIndex` and columns `open, high, low, close, volume` (the loaders normalize common names).
@@ -99,6 +99,6 @@ metrics = compute_metrics(hist["equity"], freq="D")
 
 ## Extending
 
-- Add a new strategy: create `quantbt/strategies/<name>.py`, implement `Strategy` interface (`reset`, `on_bar`, `params`), export in `quantbt/strategies/__init__.py`, and wire in `quantbt/cli.py`.
-- Add metrics: extend `quantbt/core/metrics.py` and surface new values in CLI/report if needed.
-- Enhance broker: adjust slippage/commission logic or add order types in `quantbt/core/broker.py`.
+- Add a new strategy: create `fluxbt/strategies/<name>.py`, implement `Strategy` interface (`reset`, `on_bar`, `params`), export in `fluxbt/strategies/__init__.py`, and wire in `fluxbt/cli.py`.
+- Add metrics: extend `fluxbt/core/metrics.py` and surface new values in CLI/report if needed.
+- Enhance broker: adjust slippage/commission logic or add order types in `fluxbt/core/broker.py`.

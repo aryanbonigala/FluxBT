@@ -1,4 +1,4 @@
-# quantbt: A Minimal Python Backtesting Framework
+# FluxBT: A Minimal Python Backtesting Framework: A Minimal Python Backtesting Framework
 
 ![CI](https://github.com/aryanbonigala/Backtesting-Framework-SP/actions/workflows/ci.yml/badge.svg)
 
@@ -19,7 +19,7 @@ pre-commit install
 ### Quickstart (CLI)
 
 ```bash
-python -m quantbt.cli run \
+python -m FluxBT: A Minimal Python Backtesting Framework.cli run \
   --source yfinance --ticker SPY --interval 1d --start 2015-01-01 \
   --strategy sma --fast 20 --slow 50 \
   --cash 100000 --slippage-bps 1 --commission-bps 2 \
@@ -29,7 +29,7 @@ python -m quantbt.cli run \
 Mean Reversion example:
 
 ```bash
-python -m quantbt.cli run \
+python -m FluxBT: A Minimal Python Backtesting Framework.cli run \
   --source yfinance --ticker QQQ --interval 1d --start 2015-01-01 \
   --strategy meanrev --window 20 --entry 2.0 --exit 0.5 \
   --cash 100000 --slippage-bps 1 --commission-bps 2 \
