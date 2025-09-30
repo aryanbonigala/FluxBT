@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/aryanbonigala/Backtesting-Framework-SP/actions/workflows/ci.yml/badge.svg)
 
-Quantbt is a clean, modular, single-asset backtesting framework targeting students, researchers, and entry-level quants. It provides a simple pipeline:
+FluxBT is a clean, modular, single-asset backtesting framework targeting students, researchers, and entry-level quants. It provides a simple pipeline:
 
 ```
 Data (OHLCV) → Strategy Signals → Orders → Simulated Execution (Broker) → Portfolio → Metrics → Plots/Reports → CLI
