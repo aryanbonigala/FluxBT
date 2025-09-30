@@ -1,5 +1,5 @@
 [project]
-name = "quantbt"
+name = "fluxbt"
 version = "0.1.0"
 description = "A minimal, modular single-asset backtesting framework for systematic trading"
 readme = "README.md"
@@ -40,7 +40,7 @@ dev = [
 ]
 
 [project.scripts]
-quantbt = "quantbt.cli:app"
+fluxbt = "quantbt.cli:app"
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]
