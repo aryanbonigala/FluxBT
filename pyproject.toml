@@ -40,7 +40,7 @@ dev = [
 ]
 
 [project.scripts]
-fluxbt = "quantbt.cli:app"
+fluxbt = "fluxbt.cli:app"
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]
@@ -51,7 +51,7 @@ line-length = 100
 target-version = ["py311", "py312"]
 
 [tool.setuptools.packages.find]
-include = ["quantbt*"]
+include = ["fluxbt*"]
 exclude = ["tests*", "examples*", "runs*", ".github*"]
 
 [tool.ruff]
@@ -69,7 +69,7 @@ testpaths = ["tests"]
 
 [tool.coverage.run]
 branch = true
-source = ["quantbt"]
+source = ["fluxbt"]
 
 [tool.mypy]
 python_version = "3.11"

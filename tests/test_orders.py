@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from quantbt.core.orders import Order, resolve_order_quantity
+from fluxbt.core.orders import Order, resolve_order_quantity
 
 
 def test_order_validation_and_qty_parsing() -> None:

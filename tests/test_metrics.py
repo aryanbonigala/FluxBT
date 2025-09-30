@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from quantbt.core.metrics import compute_metrics
+from fluxbt.core.metrics import compute_metrics
 
 
 def test_metrics_basic() -> None:

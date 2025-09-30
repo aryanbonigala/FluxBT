@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import pandas as pd
 
-from quantbt.core.broker import Broker
-from quantbt.core.engine import BacktestEngine
-from quantbt.data.feed import DataFeed
-from quantbt.strategies.sma_crossover import SMACrossover
+from fluxbt.core.broker import Broker
+from fluxbt.core.engine import BacktestEngine
+from fluxbt.data.feed import DataFeed
+from fluxbt.strategies.sma_crossover import SMACrossover
 
 
 def test_engine_runs_and_equity_updates() -> None:

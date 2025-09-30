@@ -16,7 +16,7 @@ from .strategies.sma_crossover import SMACrossover
 from .strategies.mean_reversion import MeanReversion
 
 
-app = typer.Typer(help="quantbt CLI")
+app = typer.Typer(help="fluxbt CLI")
 
 
 @app.command()

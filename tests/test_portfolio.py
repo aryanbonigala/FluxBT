@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import pandas as pd
 
-from quantbt.core.orders import Fill
-from quantbt.core.portfolio import Portfolio
+from fluxbt.core.orders import Fill
+from fluxbt.core.portfolio import Portfolio
 
 
 def test_portfolio_buy_mark_sell_flow() -> None:
