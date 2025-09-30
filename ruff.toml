@@ -1,0 +1,9 @@
+line-length = 100
+target-version = "py311"
+exclude = [".venv", "build", "dist", "runs", "examples"]
+
+[lint]
+select = ["E", "F", "B"]
+ignore = ["E501"]
+
+

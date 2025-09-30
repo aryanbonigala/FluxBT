@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.python-version
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Testing
+/.pytest_cache/
+/htmlcov/
+coverage.xml
+
+# IDE
+.idea/
+.vscode/
+
+# Project outputs
+/runs/
+
+
