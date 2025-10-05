@@ -21,9 +21,8 @@ class GitHubSource:
     file_path: str
 
     def raw_url(self) -> str:
-        return (
-            f"https://raw.githubusercontent.com/{self.owner}/{self.repo}/{self.branch}/{self.file_path}"
-        )
+        base = "https://raw.githubusercontent.com/"
+        return base + f"{self.owner}/{self.repo}/{self.branch}/{self.file_path}"
 
 
 class StrategyLoadError(Exception):
@@ -35,9 +34,8 @@ def fetch_strategy_code(src: GitHubSource, timeout_s: float = 20.0) -> str:
         resp = httpx.get(src.raw_url(), timeout=timeout_s)
         resp.raise_for_status()
     except Exception as exc:  # noqa: BLE001 - we attach context and rethrow
-        raise StrategyLoadError(
-            f"Failed to fetch strategy from GitHub: {src.raw_url()}\n{exc}"
-        ) from exc
+        msg = f"Failed to fetch strategy from GitHub: {src.raw_url()}\n{exc}"
+        raise StrategyLoadError(msg) from exc
     return resp.text
 
 
@@ -69,8 +67,9 @@ def _find_strategy_class(module: types.ModuleType, class_name: str | None) -> Ty
         for cls in candidates:
             if cls.__name__ == class_name:
                 return cls  # type: ignore[return-value]
+        available = [c.__name__ for c in candidates]
         raise StrategyLoadError(
-            f"Strategy class '{class_name}' not found. Available: {[c.__name__ for c in candidates]}"
+            f"Strategy class '{class_name}' not found. Available: {available}"
         )
 
     if not candidates:
@@ -108,9 +107,11 @@ def load_github_strategy(
     try:
         instance = cls()  # type: ignore[call-arg]
     except TypeError as exc:
-        raise StrategyLoadError(
-            f"Strategy class '{cls.__name__}' must be instantiable without args or provide defaults: {exc}"
-        ) from exc
+        msg = (
+            f"Strategy class '{cls.__name__}' must be instantiable without args "
+            f"or provide defaults: {exc}"
+        )
+        raise StrategyLoadError(msg) from exc
 
     # Basic interface checks
     missing: list[str] = []
@@ -118,8 +119,9 @@ def load_github_strategy(
         if not hasattr(instance, attr):
             missing.append(attr)
     if missing:
+        missing_msg = ", ".join(missing)
         raise StrategyLoadError(
-            f"Loaded strategy missing required attributes/methods: {', '.join(missing)}"
+            f"Loaded strategy missing required attributes/methods: {missing_msg}"
         )
 
     # Ensure types where feasible
