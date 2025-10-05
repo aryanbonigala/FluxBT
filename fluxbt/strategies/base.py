@@ -40,7 +40,6 @@ class BaseStrategy(ABC):
         raise NotImplementedError
 
 
-
 class Strategy(BaseStrategy):
     """Backward-compatible alias for existing code that imports Strategy."""
     pass
