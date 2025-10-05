@@ -60,7 +60,7 @@ def _load_module_from_code(module_name: str, code: str) -> types.ModuleType:
 
 def _find_strategy_class(module: types.ModuleType, class_name: str | None) -> Type[BaseStrategy]:
     candidates: list[type] = []
-    for obj_name, obj in vars(module).items():
+    for _obj_name, obj in vars(module).items():
         if isinstance(obj, type) and issubclass(obj, BaseStrategy) and obj is not BaseStrategy:
             candidates.append(obj)
 
