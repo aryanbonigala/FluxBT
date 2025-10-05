@@ -7,6 +7,15 @@ Format guidance:
 - Keep bullets concise and high-signal
 - Reference affected modules/files where useful
 
+## 2025-10-05 00:00 UTC
+- Feature: Dynamic GitHub strategy loading via new `run_github` CLI command
+  - Added `fluxbt/strategies/remote_loader.py` to fetch and load strategies from public GitHub repos
+  - Introduced `BaseStrategy` (kept `Strategy` alias for backward compatibility)
+  - Added optional validations in CLI: `supported_intervals`, `required_columns` (no strategy code changes)
+  - Added security warning for executing remote code
+  - Docs: README updates with usage examples and external strategy template
+  - Tooling: added `httpx` dependency for fetching; governance docs; pre-commit config
+
 ## 2025-09-30 16:00 UTC
 - Initial scaffold of quantbt backtesting framework
 - Data: CSV and yfinance loaders; `DataFeed` with validation
