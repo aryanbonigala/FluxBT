@@ -7,7 +7,6 @@ import pandas as pd
 from ..core.orders import Order
 
 
-
 class BaseStrategy(ABC):
     """Abstract base class for all FluxBT strategies.
 
@@ -19,6 +18,7 @@ class BaseStrategy(ABC):
     - reset(): Clear internal state; called before each run.
     - on_bar(ts, bar): Return list of Orders given the current bar.
     """
+
     @property
     @abstractmethod
     def name(self) -> str:  # pragma: no cover - interface
@@ -42,4 +42,5 @@ class BaseStrategy(ABC):
 
 class Strategy(BaseStrategy):
     """Backward-compatible alias for existing code that imports Strategy."""
+
     pass
