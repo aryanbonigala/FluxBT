@@ -67,6 +67,7 @@ See `examples/example_sma.ipynb` and `examples/example_mean_reversion.ipynb` for
 - Metrics: total return, CAGR, vol, Sharpe, max DD, Calmar, hit rate, avg win/loss, profit factor
 - Reporting: matplotlib plots; optional HTML with jinja2
 - CLI: Typer interface for repeatable runs
+- Dynamic strategy loading from GitHub via `run_github` (no code changes required)
 
 ### Run a Strategy from GitHub (Dynamic Loader)
 
