@@ -158,14 +158,14 @@ MIT
 
 ### Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+See [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md).
 
 ### Code of Conduct
 
-See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+See [.github/CODE_OF_CONDUCT.md](.github/CODE_OF_CONDUCT.md).
 
 ### Security
 
-See [SECURITY.md](SECURITY.md).
+See [.github/SECURITY.md](.github/SECURITY.md).
 
 
