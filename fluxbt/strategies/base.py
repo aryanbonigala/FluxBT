@@ -7,6 +7,7 @@ import pandas as pd
 from ..core.orders import Order
 
 
+
 class BaseStrategy(ABC):
     """Abstract base class for all FluxBT strategies.
 
@@ -37,6 +38,7 @@ class BaseStrategy(ABC):
         self, ts: pd.Timestamp, bar: dict[str, float]
     ) -> list[Order]:  # pragma: no cover - interface
         raise NotImplementedError
+
 
 
 class Strategy(BaseStrategy):

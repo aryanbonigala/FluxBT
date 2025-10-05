@@ -12,6 +12,7 @@ import httpx
 from .base import BaseStrategy
 
 
+
 @dataclass(frozen=True)
 class GitHubSource:
     owner: str
