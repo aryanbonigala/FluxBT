@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 import pandas as pd
 
 from ..data.feed import DataFeed
-from ..strategies.base import BaseStrategy, Strategy
+from ..strategies.base import BaseStrategy
 from .broker import Broker
 from .orders import Fill
 from .portfolio import Portfolio
