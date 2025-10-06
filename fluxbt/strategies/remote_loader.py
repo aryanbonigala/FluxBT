@@ -5,7 +5,7 @@ import sys
 import tempfile
 import types
 from dataclasses import dataclass
-from typing import Type
+from typing import Type, cast
 
 import httpx
 
@@ -35,7 +35,7 @@ def fetch_strategy_code(src: GitHubSource, timeout_s: float = 20.0) -> str:
     except Exception as exc:  # noqa: BLE001 - we attach context and rethrow
         msg = f"Failed to fetch strategy from GitHub: {src.raw_url()}\n{exc}"
         raise StrategyLoadError(msg) from exc
-    return resp.text
+    return cast(str, resp.text)
 
 
 def _load_module_from_code(module_name: str, code: str) -> types.ModuleType:
@@ -50,7 +50,7 @@ def _load_module_from_code(module_name: str, code: str) -> types.ModuleType:
     module = importlib.util.module_from_spec(spec)
     sys.modules[module_name] = module
     try:
-        spec.loader.exec_module(module)  # type: ignore[union-attr]
+        spec.loader.exec_module(module)
     except Exception as exc:  # noqa: BLE001
         raise StrategyLoadError(f"Error importing strategy module: {exc}") from exc
     return module
@@ -65,7 +65,7 @@ def _find_strategy_class(module: types.ModuleType, class_name: str | None) -> Ty
     if class_name:
         for cls in candidates:
             if cls.__name__ == class_name:
-                return cls  # type: ignore[return-value]
+                return cls
         available = [c.__name__ for c in candidates]
         raise StrategyLoadError(f"Strategy class '{class_name}' not found. Available: {available}")
 
@@ -76,7 +76,7 @@ def _find_strategy_class(module: types.ModuleType, class_name: str | None) -> Ty
         raise StrategyLoadError(
             f"Multiple strategy classes found ({names}); specify --class-name explicitly"
         )
-    return candidates[0]  # type: ignore[return-value]
+    return candidates[0]
 
 
 def load_github_strategy(
@@ -102,7 +102,7 @@ def load_github_strategy(
 
     # Validate required interface by instantiation and attribute access
     try:
-        instance = cls()  # type: ignore[call-arg]
+        instance = cls()
     except TypeError as exc:
         msg = (
             f"Strategy class '{cls.__name__}' must be instantiable without args "

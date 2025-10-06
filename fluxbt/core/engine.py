@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 import pandas as pd
 
 from ..data.feed import DataFeed
-from ..strategies.base import Strategy
+from ..strategies.base import BaseStrategy, Strategy
 from .broker import Broker
 from .orders import Fill
 from .portfolio import Portfolio
@@ -14,7 +14,7 @@ from .portfolio import Portfolio
 class BacktestEngine:
     feed: DataFeed
     broker: Broker
-    strategy: Strategy
+    strategy: BaseStrategy
     initial_cash: float = 100_000.0
 
     fills: list[Fill] = field(default_factory=list)
