@@ -67,9 +67,7 @@ def _find_strategy_class(module: types.ModuleType, class_name: str | None) -> Ty
             if cls.__name__ == class_name:
                 return cls  # type: ignore[return-value]
         available = [c.__name__ for c in candidates]
-        raise StrategyLoadError(
-            f"Strategy class '{class_name}' not found. Available: {available}"
-        )
+        raise StrategyLoadError(f"Strategy class '{class_name}' not found. Available: {available}")
 
     if not candidates:
         raise StrategyLoadError("No subclass of BaseStrategy found in the module")
@@ -127,4 +125,3 @@ def load_github_strategy(
     _ = instance.name  # property access
     _ = instance.params  # property access
     return instance
-
