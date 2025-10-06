@@ -128,4 +128,3 @@ def load_github_strategy(
     _ = instance.params  # property access
     return instance
 
-
