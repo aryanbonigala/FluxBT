@@ -5,7 +5,7 @@ import sys
 import tempfile
 import types
 from dataclasses import dataclass
-from typing import Type, cast
+from typing import Type
 
 import httpx
 
@@ -35,7 +35,8 @@ def fetch_strategy_code(src: GitHubSource, timeout_s: float = 20.0) -> str:
     except Exception as exc:  # noqa: BLE001 - we attach context and rethrow
         msg = f"Failed to fetch strategy from GitHub: {src.raw_url()}\n{exc}"
         raise StrategyLoadError(msg) from exc
-    return cast(str, resp.text)
+    text: str = resp.text
+    return text
 
 
 def _load_module_from_code(module_name: str, code: str) -> types.ModuleType:
